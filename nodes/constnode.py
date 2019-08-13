@@ -8,3 +8,5 @@ class constnode(brainnode):
         return super().__init__("const")
     def Load(self):
         super().Load()
+    def Run(self):
+        super().Run()
