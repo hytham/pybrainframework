@@ -12,6 +12,11 @@ class braingraph:
          "Name":node.nodeProparties["Name"],
          "Node":node
       })
+   def get(self,name):
+      '''
+      Get a node witha  specific name
+      '''
+      raise NotImplementedError  
    def connect(self,name):
          '''   
          Add a node with name to list of connections that 
