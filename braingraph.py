@@ -1,10 +1,11 @@
 import uuid
 import numpy as np
 import threading
+from enum import Enum
 from messagedb import messagedb
 from multiprocessing import Process
 
-class ExecutionType(enum.Enum):
+class ExecutionType(Enum):
        sequential = 1
        threaded = 2
        parallal = 3

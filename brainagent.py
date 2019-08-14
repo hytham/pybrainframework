@@ -1,14 +1,14 @@
 '''
 This is the main library that will constratc the brain graphs and mange its execution
 '''
-
+from enum import Enum
 from braingraph import braingraph,ExecutionType
 class brainagent:
 
     @staticmethod
     def create_sequential_graph():
         graph = braingraph()
-        graph.get_execution_type(ExecutionType.sequential)
+        graph.set_execution_type(ExecutionType.sequential)
         return graph
     
     def add_nodes(self,nodes=[]):
