@@ -13,6 +13,9 @@ class messagedb:
         def Write(self,npArray,name):
             _write(self.db,npArray,name)
         def Read(self,name):
+            '''
+            Read for amesage with a specific name
+            '''
             row = np.array(_read(self.db,name)[1])
             _deactivate(self.db,name)
             return row
@@ -25,11 +28,24 @@ class messagedb:
         def ReadImage(self,name):
             pic_array = self.Read(name)
             return PIL.Image.fromarray(pic_array)
-
-    instance = None
-    def __init__(self,*args, **kwargs):
-        if not messagedb.instance:
-            messagedb.instance = messagedb.__messagedbprivate()
+        def Peek(self,name):
+            '''
+            Read the specific message without deactivateing it
+            '''
+            return np.array(_read(self.db,name)[1])
+        def IsActive(self,name):
+            '''
+            return the status of the message true if is active
+            '''
+            return _read(self.db,name)[2] == 1
+        
+    __instance = None
+    @staticmethod
+    def Singletone():
+        if messagedb.__instance == None:
+            messagedb.__instance = messagedb.__messagedbprivate()
+        return messagedb.__instance
+   
 
 def _createInMemoryDatabase():
     '''

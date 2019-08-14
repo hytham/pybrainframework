@@ -1,13 +1,15 @@
 '''
 An abstract class that all nodes must drive from
 '''
+import numpy as np
 from abc import ABC, abstractmethod
-from messagedb import messagedb as mdb
+from messagedb import messagedb
 class brainnode(ABC):
+    
     def __init__(self,nodeName):
         self.nodeProparties = {
-            "Name": nodeName
-        }
+            "NodeType": nodeName
+        }       
     
     @abstractmethod
     def Load(self):
@@ -24,10 +26,13 @@ class brainnode(ABC):
         as an output 
         '''
         pass
-    def Set(self,name,value):
+    
+    def set(self,name,value):
         self.nodeProparties[name] = value
-    def Get(self,name):
+    def get(self,name):
         return self.nodeProparties[name]
+
+    
        
   
    
