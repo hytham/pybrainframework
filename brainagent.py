@@ -10,12 +10,18 @@ class brainagent:
         graph = braingraph()
         graph.set_execution_type(ExecutionType.sequential)
         return graph
+    @staticmethod
+    def create_threaded_graph():
+        graph = braingraph()
+        graph.set_execution_type(ExecutionType.threaded)
+        return graph
+    @staticmethod
+    def create_parallal_graph():
+        graph = braingraph()
+        graph.set_execution_type(ExecutionType.threaded)
+        return graph
     
-    def add_nodes(self,nodes=[]):
-        '''
-        Add Nodes
-        '''
-        raise NotImplementedError
+   
     @staticmethod
     def create_fromjson(self,json):
         '''

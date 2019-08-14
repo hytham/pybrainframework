@@ -42,6 +42,35 @@ class messagebusdb_test(unittest.TestCase):
         result = messagedb.Singletone().ReadImage("test")
         self.assertEqual(pic.size,result.size)
     
+    def test_clean_once(self):
+        messagedb.Singletone().Write(np.ones(1),'test')
+        result = messagedb.Singletone().Read("test")
+        self.assertEqual(1,result.size)
+        messagedb.Singletone().Clean()
+        result = messagedb.Singletone().Read("test")
+        self.assertIsNone(result)
+    def test_clean_multiple(self):
+        messagedb.Singletone().Write(np.ones(1),'test')
+        result = messagedb.Singletone().Read("test")
+        self.assertEqual(1,result.size)
+        messagedb.Singletone().Clean()
+        result = messagedb.Singletone().Read("test")
+        self.assertIsNone(result)
+        messagedb.Singletone().Write(np.ones(1),'test')
+        result = messagedb.Singletone().Read("test")
+        self.assertEqual(1,result.size)
+        messagedb.Singletone().Clean()
+        result = messagedb.Singletone().Read("test")
+        self.assertIsNone(result)
+        messagedb.Singletone().Write(np.ones(1),'test')
+        result = messagedb.Singletone().Read("test")
+        self.assertEqual(1,result.size)
+        messagedb.Singletone().Clean()
+        result = messagedb.Singletone().Read("test")
+        self.assertIsNone(result)
+
+
+    
 
 
 

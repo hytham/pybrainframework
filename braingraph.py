@@ -30,6 +30,10 @@ class braingraph:
       '''
       Add a a node to a graph
       '''
+      
+      if(self.get_execution_type() == ExecutionType.parallal and len(self.nodes) > 0):
+             raise Exception("Parallal graph must only contain one node")
+       
       if(self.node_exist(name)):
            raise Exception('Pre-exisiting node')
       self.nodes.append({

@@ -16,9 +16,13 @@ class messagedb:
             '''
             Read for amesage with a specific name
             '''
-            row = np.array(_read(self.db,name)[1])
-            _deactivate(self.db,name)
-            return row
+            row = _read(self.db,name)           
+            if row  != None:
+                _deactivate(self.db,name)
+                return np.array(row[1])
+            else:
+                return row
+           
         def AllActiveNames(self):
             actives = np.array(_listAllActive(self.db))
             return actives
@@ -38,6 +42,9 @@ class messagedb:
             return the status of the message true if is active
             '''
             return _read(self.db,name)[2] == 1
+        def Clean(self):
+            _cleanDatabase(self.db)
+
         
     __instance = None
     @staticmethod
@@ -76,7 +83,11 @@ def _read(cur,name):
         Read from the messagdb the numpy array for the name and make the active flag false
     '''
     cur.execute("select name,arr,active,timestamp from messagebus where name=?",(name,))
-    return cur.fetchone()
+    if cur.arraysize > 0:
+        return cur.fetchone()
+    else:
+        return None
+    
 
 def _listAllActive(cur):
     '''
@@ -85,6 +96,8 @@ def _listAllActive(cur):
     cur.execute("select name from messagebus where active=1")
     names = cur.fetchall()
     return names
+def _cleanDatabase(cur):
+    cur.execute("delete from messagebus")
 
 def _adapt_array(arr):
     """
