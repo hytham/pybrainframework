@@ -31,3 +31,8 @@ class logger:
 
     def log_d(self, message):
         self.stream.Write("DBG", message)
+
+    def log_e(self,exception):
+        pass
+        #assert.isinstance(Exception,exception)
+        # self.stream.Write('[ERR]',exception)
