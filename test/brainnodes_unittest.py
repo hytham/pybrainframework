@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
 
-from logger import TextLogger, Logger
+from Logger import TextLogger, Logger
 from nodes.core.Const import Const
 
 

@@ -1,7 +1,7 @@
 import unittest
 
-from brainframework import Agent, ExecutionType
-from logger import TextLogger, Logger
+from BrainFramework import Agent, ExecutionType
+from Logger import TextLogger, Logger
 from nodes.core.Const import Const
 
 

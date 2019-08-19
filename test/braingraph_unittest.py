@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
-from brainframework import NodeGraph
-from logger import TextLogger, Logger
+from BrainFramework import NodeGraph
+from Logger import TextLogger, Logger
 from nodes.core.Const import Const
 from __messagedb import messagedb
 

@@ -1,6 +1,6 @@
 import unittest
 
-from logger import TextLogger, Logger
+from Logger import TextLogger, Logger
 
 
 class messagebusdb_test(unittest.TestCase):
