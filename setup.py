@@ -8,5 +8,6 @@ setup(
     auther='Hytham Alobydi',
     auther_email='haiwa80@biomedicallc.net',
     description='This is a simple library that will allway to create a graph of networks',
-    packages=find_packages()
+    packages=find_packages(),
+    install_requires=['PIL', 'numpy']
 )
