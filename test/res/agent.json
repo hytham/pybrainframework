@@ -1,7 +1,6 @@
 {
     "graphs":[
         {
-            "type":"sequential",
             "nodes":[
                 {
                     "name":"const1",

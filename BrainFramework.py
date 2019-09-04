@@ -6,11 +6,37 @@ from multiprocessing import Process
 from abc import ABC, abstractmethod
 from __messagedb import messagedb
 
+
 class controller:
     """
-    Is the main agent controller that will setup the brain agent, load any configurations, initalize it, start it and manage its life cycle
+    Is the main agent controller that will setup the brain agent, load any configurations, initialize it,
+    start it and manage its life cycle
     """
-    pass
+    full_package_nodes = dict()
+
+    def __init__(self):
+        """ Load all modules in a dictionary to be easly constrauct whena json file is read """
+
+        self.seqGraph = Agent.CreateSequentialGraph()
+        self.thredGraph = Agent.CreateThreadedGraph()
+        self.ProcGraph = Agent.CreateParallelGraph()
+
+    def getAllGraphs(self):
+        """ Return all graphs that was created by controller so the main application can use it to add nodes to it"""
+        return self.seqGraph, self.thredGraph, self.ProcGraph
+
+    def Start(self):
+        self.seqGraph.Run()
+        self.thredGraph.Run()
+        self.ProcGraph.Run()
+
+    def LoadFromJson(self, json_file_path):
+        """ Construct the full graph from json file"""
+        seq, thr, proc = self.getAllGraphs()
+
+    def LoadSettings(self, setting_file_path):
+        """ Load all teh settings from teh file path"""
+        pass
 
 
 class BrainNode(ABC):
@@ -53,7 +79,7 @@ class BrainNode(ABC):
         """
         pass
 
-    def set(self, name, value):
+    def Set(self, name, value):
         """
             Set Node property
         :param name:  Property name
@@ -61,13 +87,16 @@ class BrainNode(ABC):
         """
         self.Properties[name] = value
 
-    def Get(self, name):
+    def Get(self, name, defaults=""):
         """
             Get Node property
+        :param defaults: the default value when the proparty do not exisit
         :param name: Property name
         :return: Property value
         """
-        return self.Properties[name]
+        if name in self.Properties:
+            return self.Properties[name]
+        return defaults
 
     def GentNodeTypes(self):
         """
@@ -75,8 +104,6 @@ class BrainNode(ABC):
         :return: Node type value
         """
         return self.Get("NodetType")
-
-
 class Agent:
     """
         An agent is main unit that host the nodes and manage its life cycle
@@ -107,15 +134,11 @@ class Agent:
             :json: the full json string to construct the graph from
         """
         raise NotImplementedError
-
-
 class ExecutionType(Enum):
     all = 0
     sequential = 1
     threaded = 2
     parallel = 3
-
-
 class NodeGraph:
     """
         A brain graph is a collection of nodes that work in together to a chive a goal
