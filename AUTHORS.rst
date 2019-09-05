@@ -5,7 +5,7 @@ Credits
 Development Lead
 ----------------
 
-* Audrey Roy Greenfeld <hytham alobydi:haiwa80@gmail.com>
+* Hytham Alobydi <haiwa80@gmail.com>
 
 Contributors
 ------------

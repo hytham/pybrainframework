@@ -18,8 +18,8 @@ setup_requirements = [ ]
 test_requirements = [ ]
 
 setup(
-    author="Audrey Roy Greenfeld",
-    author_email='hytham alobydi:haiwa80@gmail.com',
+    author="Hytham Alobydi",
+    author_email='haiwa80@gmail.com',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
