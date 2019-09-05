@@ -1,0 +1,23 @@
+{
+    "graphs":[
+        {
+            "nodes":[
+                {
+                    "name":"const1",
+                    "type":"constant",
+                    "value":[1,2,3,4,5]
+                },
+                {
+                    "name": "const2",
+                    "type": "constant",
+                    "value": [1, 2, 3, 4, 5]
+                }
+            ],
+            "connections":[
+                {"from":"const1","to":"const2"}
+
+            ]
+
+        }
+    ]
+}
