@@ -1,8 +1,8 @@
 import unittest
 import numpy as np
 
-from pybrainframework.Logger import TextLogger, Logger
-from pybrainframework. nodes.core.Const import Const
+from Logger import TextLogger, Logger
+from nodes.core.Const import Const
 
 
 class brainnodes_test(unittest.TestCase):

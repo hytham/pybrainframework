@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 import PIL.Image as img
 
-from pybrainframework.__messagedb import messagedb
+from __messagedb import messagedb
 
 
 
